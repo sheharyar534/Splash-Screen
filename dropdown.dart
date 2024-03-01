@@ -30,19 +30,28 @@ class _DropDownState extends State<DropDown> {
         //     borderRadius: BorderRadius.all(Radius.circular(5.0)),
         //   ),
         // ),
-        child: DropdownButton<String>(
-          // ignore: non_constant_identifier_names
-          items: countries.map((String DropDownStringItem) {
-            return DropdownMenuItem(
-                value: DropDownStringItem, child: Text(DropDownStringItem));
-          }).toList(),
-
-          onChanged: (String? newCountrySelected) {
-            setState(() {
-              SelectedCountry = newCountrySelected!;
-            });
-          },
-          value: SelectedCountry,
+        child: InputDecorator(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(25)
+            ),
+            contentPadding: const EdgeInsets.all(10)
+          ),
+          child: DropdownButton<String>(
+            isExpanded: true,
+            // ignore: non_constant_identifier_names
+            items: countries.map((String DropDownStringItem) {
+              return DropdownMenuItem(
+                  value: DropDownStringItem, child: Text(DropDownStringItem));
+            }).toList(),
+          
+            onChanged: (String? newCountrySelected) {
+              setState(() {
+                SelectedCountry = newCountrySelected!;
+              });
+            },
+            value: SelectedCountry,
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/mix/dropdown.dart';
 
 
 class SignUp extends StatefulWidget {
@@ -9,6 +10,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  bool isChecked=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,24 +38,23 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
         const SizedBox(height: 40),
+      
         Container(
+          margin: const EdgeInsets.all(20),
           height: 50,
-          width: 370,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(25))),
-          child: const TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25))),
-            ),
-          ),
+        
+          width:MediaQuery.of(context).size.width,
+          decoration:const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(25)),
+          color: Colors.amber),
+          child: const DropDown()
         ),
-        const SizedBox(height: 40),
+        const SizedBox(height: 20),
         Container(
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(25))),
           height: 50,
-          width: 370,
+         width:MediaQuery.of(context).size.width,
+         margin: const EdgeInsets.all(20),
           child: TextField(
             decoration: InputDecoration(
               border: const OutlineInputBorder(
@@ -169,15 +170,25 @@ class _SignUpState extends State<SignUp> {
        const       SizedBox(
           width: 20,
         ),
-            CircleAvatar(
-              radius: 20,
-              child: InkWell(
-                onTap: () {
-     
-                },
-                child: const Image(image: AssetImage("lib/images/gmail.png")),
-              ),
+            Stack(
+              children:[ 
+                const CircleAvatar(
+                  radius: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CircleAvatar(
+                    radius: 12,
+                    child: InkWell(
+                      onTap: () {
+                      },
+                      child: const Image(image: AssetImage("lib/images/gmail.png")),
+                    ),
+                  ),
+                ),
+              ]
             ),
+            
               const SizedBox(
           width: 20,
         ),
@@ -204,7 +215,8 @@ class _SignUpState extends State<SignUp> {
         child: Column(
           children: [
             Text("Already hav an account?",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-            Text("Sign in",style: TextStyle(color: Colors.amber,fontSize: 18),)
+            Text("Sign in",style: TextStyle(color: Colors.amber,fontSize: 18),),
+          
           ],
         ),
        ),
